@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Нейрокоды Денег — Архитектура Сознания</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Raleway', sans-serif;
+  background: #FAFAF8;
+  color: #1A1A1A;
+  font-size: 17px;
+  line-height: 1.82;
+}
+
+.wrap    { max-width: 580px; margin: 0 auto; padding: 0 28px; }
+.wrap-lg { max-width: 820px; margin: 0 auto; padding: 0 28px; }
+
+/* ══ NAV ══ */
+.nav {
+  
+  background: rgba(10,8,6,.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(200,160,100,.15);
+  padding: 16px 32px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.logo { font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-weight:500; color:#F0E4D0; text-decoration:none; letter-spacing:.05em; }
+.logo em { font-style:normal; color:#C8905A; }
+
+/* ══ HERO — DARK ══ */
+.hero {
+  background: #0A0806;
+  padding: 110px 28px 90px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 30%, rgba(180,100,50,.12), transparent 70%);
+  pointer-events: none;
+}
+.hero-eyebrow {
+  font-size: 11px; font-weight: 700; letter-spacing: .32em; text-transform: uppercase;
+  color: #C8905A; display: inline-block; margin-bottom: 28px; position: relative;
+}
+.hero-eyebrow::before, .hero-eyebrow::after { content: '—'; margin: 0 10px; opacity: .5; }
+.hero-h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.4rem, 6.5vw, 5.2rem);
+  font-weight: 400; line-height: 1.06; letter-spacing: -.01em;
+  color: #F0E4D0; margin-bottom: 26px; position: relative;
+}
+.hero-h1 em { font-style: italic; color: #C8905A; }
+.hero-lead {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+  font-style: italic; font-weight: 300;
+  color: rgba(240,228,208,.6); max-width: 580px; margin: 0 auto;
+  line-height: 1.65; position: relative;
+}
+
+/* ══ SECTIONS ══ */
+.sec     { padding: 72px 0; border-bottom: 1px solid #EDEAE4; }
+.sec-alt { padding: 72px 0; background: #F4F0EB; border-bottom: 1px solid #E8E2D9; }
+.sec-dark { padding: 72px 28px; background: #0A0806; text-align: center; }
+
+/* ══ TYPE ══ */
+.lbl { font-size:10.5px; font-weight:700; letter-spacing:.3em; text-transform:uppercase; color:#8B5A3C; display:block; margin-bottom:14px; }
+.lbl-c { text-align:center; }
+h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,4.5vw,3.2rem); font-weight:400; color:#1A1A1A; line-height:1.12; margin-bottom:20px; }
+h2 em { font-style:italic; color:#8B5A3C; }
+h2.c { text-align:center; }
+p { color:#3D3A36; margin-bottom:20px; font-size:1rem; line-height:1.82; }
+p:last-child { margin-bottom:0; }
+p strong { color:#1A1A1A; font-weight:600; }
+.big-q { font-family:'Cormorant Garamond',serif; font-size:clamp(1.7rem,3.8vw,2.6rem); font-style:italic; font-weight:400; color:#1A1A1A; line-height:1.28; text-align:center; margin-bottom:52px; }
+
+/* ══ MYTHS ══ */
+.myth { display:flex; gap:16px; align-items:flex-start; padding:18px 0; border-bottom:1px solid #E8E2D9; }
+.myth:last-child { border-bottom:none; }
+.myth-x { flex-shrink:0; width:26px; height:26px; border-radius:50%; background:#FDF0EE; border:1px solid #E8B4A8; display:flex; align-items:center; justify-content:center; font-size:11px; color:#C0504D; font-weight:700; margin-top:3px; }
+.myth-claim { font-weight:600; font-size:1rem; color:#1A1A1A; margin-bottom:5px; }
+.myth-why { font-size:.9rem; color:#5A5650; margin:0; line-height:1.65; }
+
+/* ══ PIVOT ══ */
+.pivot-lbl { font-size:10.5px; font-weight:700; letter-spacing:.3em; text-transform:uppercase; color:#C8A882; display:block; margin-bottom:14px; }
+.pivot-h { font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,4.5vw,3.2rem); font-weight:400; color:#F0E4D0; line-height:1.12; margin-bottom:18px; }
+.pivot-h em { font-style:italic; color:#C8A882; }
+.pivot-p { color:rgba(240,228,208,.65); max-width:600px; margin:0 auto 16px; }
+.pivot-end { font-family:'Cormorant Garamond',serif; font-size:1.45rem; font-style:italic; color:rgba(240,228,208,.85); margin-top:28px; }
+
+/* ══ CODES — BIG NUMBERS ══ */
+.code {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  border-bottom: 1px solid #EDEAE4;
+  max-width: 860px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.code:last-child { border-bottom: none; }
+.code-left {
+  padding: 52px 28px 52px 28px;
+  display: flex; flex-direction: column;
+  align-items: flex-end; justify-content: flex-start;
+  border-right: 1px solid #EDEAE4;
+  padding-top: 56px;
+}
+.code-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 7.5rem;
+  font-weight: 600;
+  line-height: .9;
+  color: #8B5A3C;
+  letter-spacing: -.04em;
+  display: block;
+}
+.code-right { padding: 52px 0 52px 36px; }
+.code-tag { font-size:10px; font-weight:700; letter-spacing:.28em; text-transform:uppercase; color:#8B5A3C; display:block; margin-bottom:12px; }
+.code-title { font-family:'Cormorant Garamond',serif; font-size:clamp(1.5rem,3.2vw,2.1rem); font-weight:500; color:#1A1A1A; line-height:1.18; margin-bottom:22px; }
+.code-right p { color:#3D3A36; font-size:.98rem; line-height:1.82; margin-bottom:18px; }
+.code-right p:last-child { margin-bottom:0; }
+
+.callout { border-left:3px solid #8B5A3C; background:#F9F4EF; padding:18px 22px; margin:22px 0; font-family:'Cormorant Garamond',serif; font-size:1.18rem; font-style:italic; color:#1A1A1A; line-height:1.55; }
+.note { background:#F4F0EB; border:1px solid #E8E2D9; padding:16px 20px; margin:20px 0; }
+.note p { font-size:.93rem; color:#3D3A36; margin:0; }
+
+/* ══ QUOTE ══ */
+.quote-wrap { border:1px solid #D4C8BC; background:#F9F4EF; padding:44px 36px; text-align:center; margin:56px 0; }
+.q-text { font-family:'Cormorant Garamond',serif; font-size:clamp(1.3rem,2.8vw,1.8rem); font-style:italic; color:#1A1A1A; line-height:1.5; margin-bottom:14px; }
+.q-attr { font-size:10.5px; letter-spacing:.22em; text-transform:uppercase; color:#8B5A3C; }
+
+/* ══ STEPS ══ */
+.steps { display:flex; flex-direction:column; gap:10px; margin:32px 0 40px; }
+.step { display:flex; gap:16px; align-items:flex-start; padding:18px 20px; background:#fff; border:1px solid #E8E2D9; }
+.step-n { flex-shrink:0; width:34px; height:34px; background:#8B5A3C; color:#fff; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-weight:600; }
+.step-t { font-size:.93rem; color:#3D3A36; line-height:1.65; }
+.step-t strong { color:#1A1A1A; }
+
+/* ══ BTN ══ */
+.btn { display:inline-block; padding:16px 48px; background:#8B5A3C; color:#fff; font-family:'Raleway',sans-serif; font-size:11.5px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; text-decoration:none; transition:background .25s; }
+.btn:hover { background:#723E24; }
+
+/* ══ FOOTER ══ */
+footer { background:#F4F0EB; border-top:2px solid #D4C8BC; padding:56px 28px 32px; }
+.footer-grid { max-width:860px; margin:0 auto 36px; display:grid; grid-template-columns:1fr auto; gap:32px 60px; }
+.f-logo { font-family:'Cormorant Garamond',serif; font-size:1.2rem; font-weight:500; color:#1A1A1A; text-decoration:none; display:block; margin-bottom:8px; }
+.f-logo em { font-style:normal; color:#8B5A3C; }
+.f-desc { font-size:.82rem; color:#7A756E; line-height:1.6; margin:0; }
+.f-title { font-size:10px; font-weight:700; letter-spacing:.3em; text-transform:uppercase; color:#8B5A3C; display:block; margin-bottom:14px; }
+.f-links { display:flex; flex-direction:column; }
+.f-links a { font-size:1.05rem; font-weight:500; color:#1A1A1A; text-decoration:none; padding:9px 0; border-bottom:1px solid #E0DBD4; letter-spacing:.02em; transition:color .2s; }
+.f-links a:last-child { border-bottom:none; }
+.f-links a:hover { color:#8B5A3C; }
+.f-bottom { max-width:860px; margin:0 auto; padding-top:20px; border-top:1px solid #E0DBD4; display:flex; flex-wrap:wrap; gap:6px 20px; justify-content:space-between; }
+.f-bottom p { font-size:.75rem; color:#9A9590; margin:0; }
+
+hr { border:none; height:1px; background:#E8E2D9; }
+
+@media(max-width:640px) {
+  .nav { padding:14px 20px; }
+  .hero { padding:80px 20px 70px; }
+  .code { grid-template-columns:70px 1fr; }
+  .code-num { font-size:4.5rem; }
+  .code-left { padding:36px 14px 36px 14px; }
+  .code-right { padding:36px 0 36px 18px; }
+  .footer-grid { grid-template-columns:1fr; }
+  .quote-wrap { padding:32px 22px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <a href="#" class="logo">Архитектура <em>Сознания</em></a>
+</header>
+
+<!-- ══ HERO — DARK ══ -->
+<section class="hero">
+  <span class="hero-eyebrow">Нейробиология денег</span>
+  <h1 class="hero-h1">
+    Почему к одним деньги<br>
+    приходят легко и стабильно,<br>
+    а другие годами качаются<br>
+    на <em>финансовых качелях?</em>
+  </h1>
+  <p class="hero-lead">
+    Не потому что им повезло и не потому что у вас «блоки».<br>
+    А потому что у них другие нейронные коды — и сейчас вы их узнаете.
+  </p>
+</section>
+
+<!-- ══ INTRO ══ -->
+<section class="sec">
+  <div class="wrap">
+    <p class="big-q">«Почему рядом с вами зарабатывают люди, которые не занимаются практиками, не ходят в терапию, не жалеют животных и пьют алкоголь — но деньги у них есть?»</p>
+
+    <p>Если вы читаете этот текст — значит, вы уже много чего пробовали. Марафоны о деньгах. Работа с убеждениями. Расстановки. Возможно, несколько курсов о «денежном мышлении». Возможно, годы терапии.</p>
+
+    <p>В результате вы сейчас очень проработанный человек. Вы простили маму и папу, отработали раскулаченного прадедушку, постояли на гвоздях и разрешили себе проявляться. Но деньги так и приходят-уходят, не задерживаясь. И когда они наконец приходят — быстро разлетаются, и вы снова проваливаетесь в беспокойство.</p>
+
+    <p>Из-за этого могут опуститься руки. Потому что делаешь много, а результата нет. И даже начинают появляться мысли, что с вами что-то не так. Что вы недостаточно хороши, чтобы вам платили. А это ещё сильнее бьёт по состоянию.</p>
+
+    <p>Дело в том, что всё перечисленное <strong>вообще не имеет отношения к деньгам</strong>. Давайте разберёмся — почему.</p>
+  </div>
+</section>
+
+<!-- ══ MYTHS ══ -->
+<section class="sec-alt">
+  <div class="wrap">
+    <span class="lbl lbl-c">— сначала уберём мифы —</span>
+    <h2 class="c">Деньги <em>не являются</em> результатом...</h2>
+    <p style="text-align:center;color:#5A5650;max-width:500px;margin:0 auto 8px;">Каждый из этих пунктов — популярное объяснение, которое звучит убедительно. Но если посмотреть на реальность — всё не так.</p>
+
+    <div style="margin-top:28px;">
+      <div class="myth">
+        <div class="myth-x">✗</div>
+        <div>
+          <p class="myth-claim">Вашей проявленности и известности</p>
+          <p class="myth-why">Деньги — это не результат вашей проявленности. Вы можете быть известным — но без денег. Миллионы подписчиков не конвертируются автоматически в доход. Это разные механизмы.</p>
+        </div>
+      </div>
+      <div class="myth">
+        <div class="myth-x">✗</div>
+        <div>
+          <p class="myth-claim">Вашей энергии и «прокаченности»</p>
+          <p class="myth-why">Вы можете быть прокаченным йогом, у которого все чакры светятся ярким огнём. Медитировать каждый день, работать с энергией, быть «в потоке». Но денег не будет — если нет нужных нейронных паттернов.</p>
+        </div>
+      </div>
+      <div class="myth">
+        <div class="myth-x">✗</div>
+        <div>
+          <p class="myth-claim">Ценности, которую вы несёте людям</p>
+          <p class="myth-why">Деньги — не результат ценности, которую вы несёте. Врачи спасают самое ценное — жизнь. И при этом зарабатывают меньше маркетологов. Ценность ≠ деньги. Это разные переменные.</p>
+        </div>
+      </div>
+      <div class="myth">
+        <div class="myth-x">✗</div>
+        <div>
+          <p class="myth-claim">Ума, образования и опыта</p>
+          <p class="myth-why">Деньги — не результат вашего ума. Иначе самыми богатыми были бы профессора и учёные. Но это явно не так. Ум помогает — но не он определяет уровень дохода.</p>
+        </div>
+      </div>
+      <div class="myth">
+        <div class="myth-x">✗</div>
+        <div>
+          <p class="myth-claim">Тяжёлого труда и усердия</p>
+          <p class="myth-why">Деньги — не результат тяжёлого труда. Иначе самыми богатыми были бы грузчики и шахтёры. Труд необходим, но он не объясняет, почему у одних — больше, а у других — меньше при одинаковых усилиях.</p>
+        </div>
+      </div>
+      <div class="myth">
+        <div class="myth-x">✗</div>
+        <div>
+          <p class="myth-claim">Денежных блоков, убеждений и рода</p>
+          <p class="myth-why">У многих состоятельных людей были огромные проблемы с родителями, алкоголем, законом — и даже психикой. Раскулаченные прадеды есть у очень многих. Но это не мешает им хорошо зарабатывать.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="quote-wrap" style="margin-top:40px;">
+      <p class="q-text">«Вы можете быть очень хорошим человеком, и всем рядом с вами будет хорошо. Но платить вам не будут. У денег нет морали — они работают по другим принципам.»</p>
+      <span class="q-attr">Архитектура Сознания</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PIVOT ══ -->
+<section class="sec-dark">
+  <span class="pivot-lbl">— в чём тогда настоящая причина —</span>
+  <h2 class="pivot-h">Причиной ваших денег<br>являются <em>нейронные коды мозга</em></h2>
+  <p class="pivot-p">Как вы видите себя среди людей. Что думаете о людях и о себе. Из какого внутреннего состояния принимаете решения каждый день.</p>
+  <p class="pivot-p">Это не про «правильное мышление» и не про аффирмации. Это конкретные нейронные паттерны, которые сформировались автоматически — и которые можно изменить. Потому что нейропластичность работает в любом возрасте.</p>
+  <p class="pivot-end">Вот 9 нейрокодов, которые объясняют, как это устроено.</p>
+</section>
+
+<!-- ══ 9 NEUROCODES ══ -->
+
+<div class="code">
+  <div class="code-left"><span class="code-num">01</span></div>
+  <div class="code-right">
+    <span class="code-tag">— нейрокод первый —</span>
+    <h3 class="code-title">У вас нет денежных блоков. Совсем. И вот доказательство.</h3>
+    <p>Прямо сейчас подумайте о сумме, которую вы хотели бы зарабатывать в месяц. Та сумма, которая немного будоражит. Есть? Теперь умножьте её на три.</p>
+    <p>А теперь представьте такую ситуацию. Вам звонит незнакомый человек и говорит: «Я знаю тебя и всех твоих близких. Если через месяц ты не переведёшь мне вот эту сумму — всё, что тебе дорого, исчезнет. Время пошло». Что вы будете делать?</p>
+    <p>Скорее всего, вы активируетесь. Начнёте звонить каким-то партнёрам, каким-то клиентам, кому-то писать. Всё то, что вы сейчас стесняетесь делать — вы будете делать совершенно свободно. Вы не будете бояться отказа. Вам будет абсолютно всё равно, что о вас подумают. Потому что у ваших действий появится большой смысл.</p>
+    <p>И что в этот момент окажется? Окажется, что у вас нет никаких денежных блоков. Окажется, что вы будете как сумасшедшие звонить, договариваться, предлагать. Потому что появится настоящая, живая причина действовать.</p>
+    <div class="callout">«Нет денежных блоков. Есть только отсутствие достаточно сильного намерения. Когда намерение настоящее — мозг находит все пути сам.»</div>
+    <p>Это первый чит-код. Ваш реальный потенциал намного выше, чем вам казалось. Вы просто ещё не нашли цель, которая бы по-настоящему активировала этот потенциал. И это — задача следующих нейрокодов.</p>
+  </div>
+</div>
+
+<div class="code">
+  <div class="code-left"><span class="code-num">02</span></div>
+  <div class="code-right">
+    <span class="code-tag">— нейрокод второй —</span>
+    <h3 class="code-title">Деньги — это не одобрение. Но ваш мозг записал именно это.</h3>
+    <p>Когда мы были маленькими — где-то в возрасте 5–7 лет — мы столкнулись с такой ситуацией: наше эмоциональное состояние зависело не от наших результатов, а от настроения взрослых рядом.</p>
+    <p>Ты мог прийти домой с пятёркой, а если у отца плохое настроение — всё равно выхватишь. Или прийти с двойкой, а у мамы прекрасный день — и всё сошло с рук. В итоге мозг ребёнка не сформировал причинно-следственную связь между «что я делаю» и «что получаю». Единственное, что можно было контролировать — быть хорошим. Нравиться взрослым. Тогда хотя бы есть шанс на безопасность.</p>
+    <p>Потом мы выросли. Родителей заменили деньги. Но программа осталась та же. Деньги стали новым «одобрением мира». Если деньги есть — значит, мир принимает меня, я достаточно хорош. Если нет — что-то со мной не так, я в опасности.</p>
+    <div class="note"><p><strong>Именно поэтому</strong> отсутствие денег вызывает такой непропорциональный эмоциональный отклик — как будто жизнь заканчивается. Для мозга это не про деньги. Это про базовое одобрение и выживание.</p></div>
+    <p>Поэтому первое, что нужно себе усвоить: деньги — это не разрешение на жизнь. Есть у вас деньги или нет — если вы живы, вам можно жить. Деньги — это инструмент. Просто инструмент. Как молоток. Никто не чувствует экзистенциальный ужас, когда у него нет молотка. Потому что молоток — просто инструмент.</p>
+  </div>
+</div>
+
+<div class="code">
+  <div class="code-left"><span class="code-num">03</span></div>
+  <div class="code-right">
+    <span class="code-tag">— нейрокод третий —</span>
+    <h3 class="code-title">Деньги приходят от людей. И люди платят совсем не за то, что вы думаете.</h3>
+    <p>Деньги не существуют сами по себе. У них нет сознания, нет эмоций, нет морали. Они не решают, к кому прийти. Деньги всегда приходят от конкретных живых людей — которые принимают решение: заплатить вам или отдать деньги кому-то другому.</p>
+    <p>И вот тут возникает главный вопрос: а почему люди вообще платят деньги? Что заставляет человека достать кошелёк?</p>
+    <p>Большинство из нас выросли с программой: чтобы получить деньги — нужно понравиться. Мы стараемся показаться хорошими, крутыми, опытными. Выставляем дипломы и кейсы. Рассказываем, какие мы классные специалисты. Стараемся сделать человеку хорошо, чтобы он понял, что с нами будет прекрасно.</p>
+    <p>Это детская программа. В детстве вы вставали на табуреточку, читали стишок — и получали конфетку. Взрослые умилялись, давали что-то приятное. Мозг запомнил: понравиться = получить. Но во взрослой жизни это не работает.</p>
+    <div class="callout">«Люди платят не за то, какой вы. Они платят за то, что хотят получить. Это один из ключевых нейрокодов. Усвойте его — и ваш доход начнёт меняться независимо от всего остального.»</div>
+    <p>Максимум, что вы получите, если «будете нравиться» — это лайк в инстаграме. Но отдавать вам свои деньги люди не станут. Они станут платить только тогда, когда получат то, что им действительно нужно. Поэтому главный разворот — с себя на людей. Не «как мне понравиться», а «что им на самом деле нужно».</p>
+  </div>
+</div>
+
+<div class="code">
+  <div class="code-left"><span class="code-num">04</span></div>
+  <div class="code-right">
+    <span class="code-tag">— нейрокод четвёртый —</span>
+    <h3 class="code-title">Финансовые качели — это не характер и не судьба. Это ретикулярная формация без цели.</h3>
+    <p>В вашем мозге есть структура, которая называется ретикулярная формация. Её задача — фильтровать реальность. Каждую секунду на ваши органы чувств поступает около 11 миллионов бит информации. В сознание проходит только 40. Ретикулярная формация решает, что пропустить — и делает это на основе ваших текущих целей и эмоционального состояния.</p>
+    <p>Именно поэтому, когда вы купили красный автомобиль — вдруг начинаете замечать красные автомобили везде. Это не совпадение. Ретикулярная формация настроила фильтр.</p>
+    <p>Теперь о деньгах. Когда у вас мало денег и есть реальное давление — срочно нужно что-то заплатить — вы активируетесь. Ретикулярная формация настраивается на поиск решений. Вы делаете звонки, находите клиентов, договариваетесь. Деньги пришли. И что происходит дальше?</p>
+    <p>Цель исчезла. Мозг расслабился. Ретикулярная формация перестала искать. Деньги постепенно тают. Появляется новое давление — снова активация. И так по кругу. Вниз — вверх — вниз — вверх. Синусоида.</p>
+    <div class="note"><p>Это <strong>не потому что вы ленивый</strong> или «у вас такая судьба». А потому что ретикулярная формация работает только на закрытие текущей дыры, а не на рост. Нет дыры — нет активации.</p></div>
+    <p>Выход один: поставить цель ЗА деньгами. Такую, которая не заканчивается, когда деньги пришли. Тогда ретикулярная формация не останавливается — она продолжает искать возможности постоянно, независимо от текущего баланса.</p>
+  </div>
+</div>
+
+<div class="code">
+  <div class="code-left"><span class="code-num">05</span></div>
+  <div class="code-right">
+    <span class="code-tag">— нейрокод пятый —</span>
+    <h3 class="code-title">С «получить» — на «отдать». Именно здесь начинается масштаб.</h3>
+    <p>Когда вы думаете «сколько я хочу получить» — ретикулярная формация ищет возможности в рамках этой конкретной суммы. Хотите 200 тысяч в месяц — мозг работает в режиме «где взять 200 тысяч». Это ограниченная рамка.</p>
+    <p>Когда вы переходите к вопросу «скольким людям я могу дать то, что умею» — ограничений нет. Буквально все люди на планете, которым может понадобиться то, что вы делаете. Это принципиально другой масштаб поиска.</p>
+    <p>Это как идти по дороге и смотреть себе под ноги. Вы очень хорошо видите, куда сделаете следующий шаг — но не видите вообще ничего вокруг. А когда вы поднимаете голову, картина становится максимально полной. Вы начинаете видеть, какой у вас реальный охват, сколько людей вам нужно и как до них добраться.</p>
+    <div class="callout">«Переключение с "получить" на "отдать" — это не про альтруизм. Это про то, как буквально работает ретикулярная формация. Шире запрос — шире поле возможностей, которые мозг начинает замечать.»</div>
+    <p>И здесь обязательно появятся сомнения: «да кто я такой», «почему люди ко мне пойдут», «у меня не получится». Это голос старой программы. Посмотрите на свой путь — в вашей жизни уже были моменты, когда у вас всё отлично получалось. Это было не случайно. Те же качества, которые тогда сработали — никуда не делись.</p>
+  </div>
+</div>
+
+<div class="code">
+  <div class="code-left"><span class="code-num">06</span></div>
+  <div class="code-right">
+    <span class="code-tag">— нейрокод шестой —</span>
+    <h3 class="code-title">Ваши отношения с деньгами — это зеркало ваших отношений с людьми.</h3>
+    <p>Так как деньги приходят от людей — ваши отношения с деньгами напрямую отражают ваши отношения с людьми, с миром и с самим собой.</p>
+    <p>Представьте, что вам 7 лет и вы пришли играть на новую детскую площадку, где уже играют незнакомые дети. Вам нужно будет влиться к ним в игру. Что вы будете чувствовать? Неуверенность, стеснение? «А вдруг они меня не примут?»</p>
+    <p>Вот эти ощущения — они отражают ваши отношения с деньгами прямо сейчас. Вы сами стесняетесь предложить людям то, что они хотят. Боитесь быть отвергнутым. Боитесь, что вас «не примут».</p>
+    <div class="callout">«Деньги не меняют вашего состояния — они поддерживают текущее. Если вы привыкли бороться и доказывать — деньги будут приходить именно через борьбу и доказательства. И через поражения тоже. Потому что не бывает воинов без поражений.»</div>
+    <p>Это порождает финансовые качели и постоянное беспокойство. Потому что вы на каком-то уровне понимаете, что можете проиграть в очередной битве. Позиция сотрудничества — «я могу помочь тебе получить то, что ты хочешь» — открывает возможности, которых в режиме борьбы за ресурс просто не видно.</p>
+  </div>
+</div>
+
+<div class="code">
+  <div class="code-left"><span class="code-num">07</span></div>
+  <div class="code-right">
+    <span class="code-tag">— нейрокод седьмой —</span>
+    <h3 class="code-title">Долженствование прорастает в обе стороны. И это работает буквально.</h3>
+    <p>«Клиенты должны покупать». «Мне должны платить больше». «Он должен был поступить иначе». «Мир должен быть справедливее». Знакомо?</p>
+    <p>Деньги имеют зеркальное свойство — они отражают ваши ожидания, причём работают в обе стороны. Если вы считаете, что вам кто-то что-то должен и обижаетесь, когда не получаете этого — зеркало сработает так, что вы сами окажетесь в долгах.</p>
+    <p>Это нейронные петли, которые удерживают внимание в прошлом или в воображаемом сценарии. Пока внимание там — вы буквально не видите настоящих возможностей. Ретикулярная формация занята «справедливостью», а не поиском решений.</p>
+    <div class="callout">«Долженствование — это зерно, прорастающее в обе стороны. Считаешь, что тебе должны или обязаны — сам будешь должен. Это не философия. Это механизм.»</div>
+    <p>Освобождение от долженствования — это не «думать позитивно» и не «принять всех». Это просто признать: другой человек не обязан был соответствовать моим ожиданиям. Это физически высвобождает нейронные ресурсы, которые сейчас заняты поддержанием этих петель — и они начинают работать на поиск возможностей.</p>
+  </div>
+</div>
+
+<div class="code">
+  <div class="code-left"><span class="code-num">08</span></div>
+  <div class="code-right">
+    <span class="code-tag">— нейрокод восьмой —</span>
+    <h3 class="code-title">Деньги приходят только под конкретное намерение.</h3>
+    <p>Многие люди действительно не зарабатывают больших денег, потому что не понимают, зачем они им нужны. Нет конкретного образа. Нет конкретного намерения. Есть абстрактное «хочу больше» — но это не цель, это просто слова.</p>
+    <p>Мы с вами говорили про ретикулярную формацию — она работает с конкретными образами, а не с абстракциями. «Хочу больше денег» — мозг не знает, что с этим делать. «Хочу поехать в Японию в феврале, это 280 000₽» — вот это конкретная задача.</p>
+    <p>Посмотрите на человека, который хочет купить себе машину. Он думает об этом, работает, откладывает, накапливает и покупает. Хорошо. Но мы все знаем людей, для которых купить машину — это просто зайти в салон, приложить телефон к терминалу и всё. Они не думали об этом специально, не копили, не ставили это себе намерением. Вопрос: а о чём тогда думают эти люди?</p>
+    <div class="callout">«Деньги приходят под намерение и состояние. Какое намерение — такие и деньги. Если намерение — "выжить", деньги приходят ровно на выживание. Если намерение — создать, деньги приходят под создание.»</div>
+    <p>Поэтому ваша задача — понять, под что именно вам нужны деньги. Не «на жизнь» в общем, а конкретно: какие эмоции, какой опыт, какой рост, какой вклад. Чем конкретнее образ — тем точнее работает ретикулярная формация.</p>
+  </div>
+</div>
+
+<div class="code">
+  <div class="code-left"><span class="code-num">09</span></div>
+  <div class="code-right">
+    <span class="code-tag">— нейрокод девятый —</span>
+    <h3 class="code-title">Хочешь порядка в деньгах — начни управлять своим временем и вниманием.</h3>
+    <p>Если мы посмотрим, как человек обращается со своим вниманием и временем — мы всегда сможем сказать, какие у него отношения с деньгами. Это работает в обе стороны.</p>
+    <p>Внимание и время — наши главные ресурсы. Деньги, по сути, являются эквивалентом того времени, которое мы экономим людям. Человек может вырастить салат у себя дома — но это долго. Поэтому он покупает его в магазине. Продавец продаёт не салат — он продаёт своё время, уже вложенное в этот салат. Именно за это и платят деньги.</p>
+    <p>Если человек не может правильно обращаться со своим временем и вниманием — он не выстроит нормальные отношения с деньгами. Потому что деньги — это конвертированное время. Хаос во времени = хаос в деньгах.</p>
+    <div class="callout">«То, куда вы инвестируете время и внимание сегодня — это ваш финансовый результат через 6–12 месяцев. Не завтра. Не сразу. Но неизбежно. Хочешь другого результата — инвестируй внимание в другое.»</div>
+    <p>Это не про тайм-менеджмент и расписание по минутам. Это про то, чтобы осознанно выбирать, куда идёт ваше главное ресурсное состояние. Потому что именно туда и придут деньги.</p>
+  </div>
+</div>
+
+<!-- QUOTE -->
+<section class="sec">
+  <div class="wrap">
+    <div class="quote-wrap">
+      <p class="q-text">«Деньги не выбирают хороших или плохих. Они работают по нейробиологическим принципам — и теперь вы их знаете.»</p>
+      <span class="q-attr">Архитектура Сознания</span>
+    </div>
+  </div>
+</section>
+
+<!-- TRANSITION -->
+<section class="sec-alt" style="text-align:center;">
+  <div class="wrap">
+    <span class="lbl lbl-c">— что дальше —</span>
+    <h2 class="c">Понять — первый шаг.<br><em>Изменить — это другое.</em></h2>
+
+    <p style="color:#3D3A36;max-width:580px;margin:0 auto 16px;">Вы только что узнали 9 нейрокодов. И, возможно, что-то из этого отозвалось — «да, это про меня».</p>
+    <p style="color:#3D3A36;max-width:580px;margin:0 auto 16px;">Но знание механизма ещё не меняет нейронный паттерн. Мозг не меняется от понимания — он меняется через <strong>новый повторяющийся опыт. 14–21 день</strong>. Именно столько нужно для формирования новой нейронной магистрали.</p>
+    <p style="color:#3D3A36;max-width:580px;margin:0 auto 30px;">Для этого вам <strong>не понадобятся годы терапий</strong>. Не нужно принимать маму и папу, часами медитировать или искать своё предназначение. С вами всё в порядке. Вы уже на своём пути.</p>
+
+    <div class="steps" style="max-width:560px;margin:0 auto 40px;text-align:left;">
+      <div class="step"><div class="step-n">1</div><p class="step-t"><strong>Никаких сложных проработок и расстановок.</strong> Нейронные паттерны меняются через прямую работу с мозгом — не через осознание того, как они появились.</p></div>
+      <div class="step"><div class="step-n">2</div><p class="step-t"><strong>30 минут в день.</strong> Аудио-нейропрограмма + конкретное практическое задание. Без рабочих тетрадей на 50 страниц и многочасовых медитаций.</p></div>
+      <div class="step"><div class="step-n">3</div><p class="step-t"><strong>Первые изменения — на 3–5 день.</strong> Именно тогда начинают формироваться новые нейронные связи, и мозг начинает принимать другие решения.</p></div>
+    </div>
+
+    <p style="color:#5A5650;max-width:560px;margin:0 auto 36px;font-style:italic;font-family:'Cormorant Garamond',serif;font-size:1.15rem;">Я пока не видела человека, который применил эти нейрокоды последовательно — и не вырос в своей реализации и финансах.</p>
+
+    <a href="arkhitektura_deneg_sales_v6.html" class="btn">Получить программу →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <a href="#" class="f-logo">Архитектура <em>Сознания</em></a>
+      <p class="f-desc">Нейробиология, сознание, трансформация.<br>Научный подход к перестройке мозга.</p>
+    </div>
+    <div>
+      <span class="f-title">Навигация</span>
+      <div class="f-links">
+        <a href="https://t.me/TheBodyMindCode_support">Поддержка</a>
+        <a href="https://www.instagram.com/thebodymindcode" target="_blank">Instagram</a>
+        <a href="https://thebodymindcode.github.io/shop/" target="_blank">Все программы</a>
+      </div>
+    </div>
+  </div>
+  <div class="f-bottom">
+    <p>© 2026 Архитектура Сознания</p>
+    <p>ИП Ростовцева Дарья Валерьевна · ИНН: 241103415641</p>
+  </div>
+</footer>
+
+</body>
+</html>
